@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Piano</title>
+    <style>
+
+    html, body{
+      background-color:#C04000;
+    }
+
+    #keyboard{
+      position:relative;
+      width:390px;
+      top: 100px;
+      margin: auto;
+    }
+
+    .note{
+      width:60px;
+      height: 270px;
+      background-color:#f7f7f7;
+      border: black solid 2px;
+      position:absolute;
+    }
+    .note:hover{
+      background-color:lightblue;
+      box-shadow: 0 0 4px darkgrey;
+      cursor: pointer;
+    }
+    .bnote{
+      width: 35px;
+      height: 170px;
+      background-color:black;
+      position: absolute;
+    }
+    .letterBox{
+      width: 40px;
+      height: 40px;
+      border: black solid 2px;
+      position:absolute;
+      top: 220px;
+    }
+    .keyboard{
+      text-align:center;
+      font-size: 22px;
+      font-weight: bold;
+      text-shadow: 0 0 4px #f7f7f7;
+      position:relative;
+      top: - 15px;
+    }
+
+
+    </style>
+  </head>
+  <body>
+
+    <div id="keyboard">
+      <div class="note" id="c" onclick="keyC()"></div>
+      <div class="note" id="d" onclick="keyD()"></div>
+      <div class="note" id="e" onclick="keyE()"></div>
+      <div class="note" id="f" onclick="keyF()"></div>
+      <div class="note" id="g" onclick="keyG()"></div>
+      <div class="note" id="a" onclick="keyA()"></div>
+      <div class="note" id="b" onclick="keyB()"></div>
+      <div class="bnote"></div>
+      <div class="bnote"></div>
+      <div class="bnote"></div>
+      <div class="bnote"></div>
+      <div class="bnote"></div>
+      <div class="letterBox" id="lA"><p class="keyboard">A</p></div>
+      <div class="letterBox" id="lS"><p class="keyboard">S</p></div>
+      <div class="letterBox" id="lD"><p class="keyboard">D</p></div>
+      <div class="letterBox" id="lF"><p class="keyboard">F</p></div>
+      <div class="letterBox" id="lG"><p class="keyboard">G</p></div>
+      <div class="letterBox" id="lH"><p class="keyboard">H</p></div>
+      <div class="letterBox" id="lJ"><p class="keyboard">J</p></div>
+    </div>
+
+
+    <script>
+
+    var note = document.getElementsByClassName('note');
+    var bnote = document.getElementsByClassName('bnote');
+    var letterBox = document.getElementsByClassName('letterBox');
+
+    var posNote = function() {
+      for(var i = 0; i < note.length; i++){
+      note[i].style.left=i * 65 + "px";
+    }
+    };
+
+    var posLB = function() {
+      for(var i = 0; i < letterBox.length; i++){
+      letterBox[i].style.left=(i * 65) + 9 + "px";
+    }
+    };
+
+    var posBnote = function() {
+      for(var i = 0; i < bnote.length; i++){
+        var j = i + 62;
+        if( i  < 2 ){
+          bnote[i].style.left= (i + 0.74)  * 65 + "px";
+        } else {
+          bnote[i].style.left= ((i + 0.74)  * 65) + 65 + "px";
+        }
+        }
+      }
+
+      var keyC = function(){
+        var cKey = new Audio('sounds/C4.wav');
+        cKey.play();
+      }
+
+      var keyD = function(){
+        var dKey = new Audio('sounds/D4.wav');
+        dKey.play();
+      }
+
+      var keyE = function(){
+        var eKey = new Audio('sounds/E4.wav');
+        eKey.play();
+      }
+
+      var keyF = function(){
+        var fKey = new Audio('sounds/F4.wav');
+        fKey.play();
+      }
+
+      var keyG = function(){
+        var gKey = new Audio('sounds/G4.wav');
+        gKey.play();
+      }
+
+      var keyA = function(){
+        var aKey = new Audio('sounds/A4.wav');
+        aKey.play();
+      }
+
+      var keyB = function(){
+        var bKey = new Audio('sounds/B4.wav');
+        bKey.play();
+      }
+
+      window.addEventListener("keydown", function(event){
+        if(event.keyCode === 65){
+          keyC();
+        }
+        else if(event.keyCode === 83){
+          keyD();
+        }
+        else if(event.keyCode === 68){
+          keyE();
+        }
+        else if(event.keyCode === 70){
+          keyF();
+        }
+        else if(event.keyCode === 71){
+          keyG();
+        }
+        else if(event.keyCode === 72){
+          keyA();
+        }
+        else if(event.keyCode === 74){
+          keyB();
+        }
+      });
+
+
+    posNote();
+
+    posBnote();
+
+    posLB();
+    </script>
+  </body>
+</html>
